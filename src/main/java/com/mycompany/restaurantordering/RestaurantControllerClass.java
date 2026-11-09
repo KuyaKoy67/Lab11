@@ -67,6 +67,7 @@ public class RestaurantControllerClass {
     @FXML
     void placeButton(ActionEvent event) {
         System.out.println("Order has been placed!");
+        
     }
 }
 

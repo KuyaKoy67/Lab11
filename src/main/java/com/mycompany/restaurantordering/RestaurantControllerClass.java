@@ -1,6 +1,7 @@
 package com.mycompany.restaurantordering;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -66,7 +67,7 @@ public class RestaurantControllerClass {
     private CheckBox freeWaterCheckBox;
 
     @FXML
-    private ListView<?> itemsListView;
+    private ListView<String> itemsListView;
 
     @FXML
     private RadioButton juiceRadioButton;

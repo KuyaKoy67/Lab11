@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <MenuBar layoutY="2.0" prefHeight="0.0" prefWidth="600.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+               <items>
+                  <MenuItem mnemonicParsing="false" text="Place Order" />
+                  <MenuItem mnemonicParsing="false" text="Clear Order" />
+                  <MenuItem mnemonicParsing="false" text="Exit" />
+               </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Edit">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Entree" />
+                  <MenuItem mnemonicParsing="false" text="Drink" />
+                  <MenuItem mnemonicParsing="false" text="Special Request" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <ListView fx:id="itemsListView" layoutX="26.0" layoutY="71.0" prefHeight="137.0" prefWidth="247.0" />
+      <RadioButton fx:id="coffeeRadioButton" layoutX="367.0" layoutY="96.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="Coffee">
+         <toggleGroup>
+            <ToggleGroup fx:id="toggleGroup" />
+         </toggleGroup>
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="teaRadioButton" layoutX="367.0" layoutY="120.0" mnemonicParsing="false" text="Tea" toggleGroup="$toggleGroup">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="juiceRadioButton" layoutX="367.0" layoutY="167.0" mnemonicParsing="false" text="Juice" toggleGroup="$toggleGroup">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <RadioButton fx:id="sodaRadioButton" layoutX="367.0" layoutY="143.0" mnemonicParsing="false" text="Soda" toggleGroup="$toggleGroup">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </RadioButton>
+      <TextField fx:id="specialRequestTextField" layoutX="26.0" layoutY="286.0" prefHeight="17.0" prefWidth="549.0" />
+      <CheckBox fx:id="freeWaterCheckBox" layoutX="26.0" layoutY="223.0" mnemonicParsing="false" text="Request Free Water">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </CheckBox>
+      <Label fx:id="currentOrderLabel" layoutX="80.0" layoutY="317.0" text="Current Order">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label fx:id="totalLabel" layoutX="80.0" layoutY="350.0" text="Total : $0.00">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Button fx:id="placeOrderButton" layoutX="339.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Place Order" />
+      <Button fx:id="clearOrderButton" layoutX="452.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Clear Order" />
+      <Label layoutX="26.0" layoutY="47.0" text="Entree Selection">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="251.0" text="Special Requests">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="353.0" layoutY="52.0" text="Drink Selection">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

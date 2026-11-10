@@ -15,10 +15,13 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
 
 public class RestaurantControllerClass {
+    
+    private final Order order = new Order();
     
     private String selectedEntree = "";
     private double entreePrice = 0.0;
@@ -29,33 +32,27 @@ public class RestaurantControllerClass {
     
     @FXML
     public void initialize() {
-        itemsListView.setItems(FXCollections.observableArrayList(
-        "Chicken Salad ($6.50)",
-        "Turkey Sandwich ($6.75)", 
-        "Vegetable Wrap ($6.50)", 
-        "Grilled Cheese ($5.00)"));
-        
-        itemsListView.getSelectionModel().selectedItemProperty().addListener((obs, oldVal, newVal) -> {
-            if (newVal != null) {
-                if (newVal.contains("Chicken Salad")) {
-                    selectedEntree = "Chicken Salad";
-                    entreePrice = 6.50;
-                } else if (newVal.contains("Turkey Sandwich")) {
-                    selectedEntree = "Turkey Sandwich";
-                    entreePrice = 6.75;
-                } else if (newVal.contains("Vegetable Wrap")) {
-                    selectedEntree = "Vegetable Wrap";
-                    entreePrice = 6.50;
-                } else if (newVal.contains("Grilled Cheese")) {
-                    selectedEntree = "Grilled Cheese";
-                    entreePrice = 5.00;
-                }
-            }
-        });
+        itemsListView.setItems(FXCollections.observableArrayList(Order.getEntreePrices().keySet()));
+        itemsListView.getSelectionModel().selectedItemProperty().addListener((obs, o, n) -> updateOrder());
+        specialRequestTextField.textProperty().addListener((obs, o, n) -> updateOrder());
+    }
+ 
+    @FXML
+    void updateOrder() {
+        order.setEntree(itemsListView.getSelectionModel().getSelectedItem());
+ 
+        Toggle drink = toggleGroup.getSelectedToggle();
+        order.setDrink(drink == null ? null : ((RadioButton) drink).getText());
+ 
+        order.setWaterRequested(freeWaterCheckBox.isSelected());
+        order.setSpecialRequests(specialRequestTextField.getText());
+ 
+        currentOrderLabel.setText("Current Order: "
+                + (order.getEntree() == null ? "-" : order.getEntree()) + ", "
+                + (order.getDrink() == null ? "-" : order.getDrink()));
+        totalLabel.setText(String.format("Total: $%.2f", order.getTotal()));
     }
     
-    
-
     @FXML
     private Button clearOrderButton;
  

@@ -32,5 +32,68 @@ public class Order {
     private String drink;
     private String specialRequests = "";
     private boolean waterRequested;
+    
+    public static Map<String, Double> getEntreePrices() {
+        return ENTREE_PRICES;
+    }
+ 
+    public static Map<String, Double> getDrinkPrices() {
+        return DRINK_PRICES;
+    }
+ 
+    public String getEntree() {
+        return entree;
+    }
+ 
+    public void setEntree(String entree) {
+        this.entree = entree;
+    }
+ 
+    public String getDrink() {
+        return drink;
+    }
+ 
+    public void setDrink(String drink) {
+        this.drink = drink;
+    }
+ 
+    public String getSpecialRequests() {
+        return specialRequests;
+    }
+ 
+    public void setSpecialRequests(String specialRequests) {
+        this.specialRequests = (specialRequests == null) ? "" : specialRequests;
+    }
+ 
+    public boolean isWaterRequested() {
+        return waterRequested;
+    }
+ 
+    public void setWaterRequested(boolean waterRequested) {
+        this.waterRequested = waterRequested;
+    }
+ 
+    public double getEntreePrice() {
+        return entree == null ? 0.0 : ENTREE_PRICES.getOrDefault(entree, 0.0);
+    }
+ 
+    public double getDrinkPrice() {
+        return drink == null ? 0.0 : DRINK_PRICES.getOrDefault(drink, 0.0);
+    }
+ 
+    public double getTotal() {
+        return getEntreePrice() + getDrinkPrice();
+    }
+ 
+    public boolean isComplete() {
+        return entree != null && drink != null;
+    }
+ 
+    public void clear() {
+        entree = null;
+        drink = null;
+        specialRequests = "";
+        waterRequested = false;
+    }
 }
 

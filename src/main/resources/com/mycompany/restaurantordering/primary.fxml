@@ -14,33 +14,33 @@
 <?import javafx.scene.text.Font?>
 
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.restaurantordering.RestaurantControllerClass">
    <children>
       <MenuBar layoutY="2.0" prefHeight="0.0" prefWidth="600.0">
         <menus>
           <Menu mnemonicParsing="false" text="File">
                <items>
-                  <MenuItem mnemonicParsing="false" text="Place Order" />
-                  <MenuItem mnemonicParsing="false" text="Clear Order" />
-                  <MenuItem mnemonicParsing="false" text="Exit" />
+                  <MenuItem fx:id="placeOrderMenuItem" mnemonicParsing="false" onAction="#placeButton" text="Place Order" />
+                  <MenuItem fx:id="clearOrderMenuItem" mnemonicParsing="false" onAction="#clearButton" text="Clear Order" />
+                  <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exitMenu" text="Exit" />
                </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Edit">
             <items>
-              <MenuItem mnemonicParsing="false" text="Entree" />
-                  <MenuItem mnemonicParsing="false" text="Drink" />
-                  <MenuItem mnemonicParsing="false" text="Special Request" />
+              <MenuItem fx:id="clearEntreeMenuItem" mnemonicParsing="false" onAction="#clearEntreeMenu" text="Entree" />
+              <MenuItem fx:id="clearDrinkMenuItem" mnemonicParsing="false" onAction="#clearDrinkMenu" text="Drink" />
+              <MenuItem fx:id="clearSpecialRequestMenuItem" mnemonicParsing="false" onAction="#clearSpecialRequestMenu" text="Special Request" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Help">
             <items>
-              <MenuItem mnemonicParsing="false" text="About" />
+              <MenuItem fx:id="aboutMenuItem" mnemonicParsing="false" onAction="#aboutMenu" text="About" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
       <ListView fx:id="itemsListView" layoutX="26.0" layoutY="71.0" prefHeight="137.0" prefWidth="247.0" />
-      <RadioButton fx:id="coffeeRadioButton" layoutX="367.0" layoutY="96.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="78.0" text="Coffee">
+      <RadioButton fx:id="coffeeRadioButton" layoutX="367.0" layoutY="96.0" mnemonicParsing="false" onAction="#drinkSelected" prefHeight="17.0" prefWidth="78.0" text="Coffee">
          <toggleGroup>
             <ToggleGroup fx:id="toggleGroup" />
          </toggleGroup>
@@ -48,39 +48,39 @@
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="teaRadioButton" layoutX="367.0" layoutY="120.0" mnemonicParsing="false" text="Tea" toggleGroup="$toggleGroup">
+      <RadioButton fx:id="teaRadioButton" layoutX="367.0" layoutY="120.0" mnemonicParsing="false" onAction="#drinkSelected" text="Tea" toggleGroup="$toggleGroup">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="juiceRadioButton" layoutX="367.0" layoutY="167.0" mnemonicParsing="false" text="Juice" toggleGroup="$toggleGroup">
+      <RadioButton fx:id="sodaRadioButton" layoutX="367.0" layoutY="143.0" mnemonicParsing="false" onAction="#drinkSelected" text="Soda" toggleGroup="$toggleGroup">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="sodaRadioButton" layoutX="367.0" layoutY="143.0" mnemonicParsing="false" text="Soda" toggleGroup="$toggleGroup">
+      <RadioButton fx:id="juiceRadioButton" layoutX="367.0" layoutY="167.0" mnemonicParsing="false" onAction="#drinkSelected" text="Juice" toggleGroup="$toggleGroup">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </RadioButton>
-      <TextField fx:id="specialRequestTextField" layoutX="26.0" layoutY="286.0" prefHeight="17.0" prefWidth="549.0" />
-      <CheckBox fx:id="freeWaterCheckBox" layoutX="26.0" layoutY="223.0" mnemonicParsing="false" text="Request Free Water">
+      <TextField fx:id="specialRequestTextField" layoutX="26.0" layoutY="286.0" prefHeight="17.0" prefWidth="549.0" promptText="e.g. Hold the onion" />
+      <CheckBox fx:id="freeWaterCheckBox" layoutX="26.0" layoutY="223.0" mnemonicParsing="false" onAction="#waterToggled" text="Request Free Water">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </CheckBox>
-      <Label fx:id="currentOrderLabel" layoutX="80.0" layoutY="317.0" text="Current Order">
+      <Label fx:id="currentOrderLabel" layoutX="80.0" layoutY="317.0" text="Current Order:">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Label fx:id="totalLabel" layoutX="80.0" layoutY="350.0" text="Total : $0.00">
+      <Label fx:id="totalLabel" layoutX="80.0" layoutY="350.0" text="Total: $0.00">
          <font>
             <Font name="System Bold" size="18.0" />
          </font>
       </Label>
-      <Button fx:id="placeOrderButton" layoutX="339.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Place Order" />
-      <Button fx:id="clearOrderButton" layoutX="452.0" layoutY="322.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="87.0" text="Clear Order" />
+      <Button fx:id="placeOrderButton" layoutX="339.0" layoutY="322.0" mnemonicParsing="false" onAction="#placeButton" prefHeight="25.0" prefWidth="87.0" text="Place Order" />
+      <Button fx:id="clearOrderButton" layoutX="452.0" layoutY="322.0" mnemonicParsing="false" onAction="#clearButton" prefHeight="25.0" prefWidth="87.0" text="Clear Order" />
       <Label layoutX="26.0" layoutY="47.0" text="Entree Selection">
          <font>
             <Font name="System Bold" size="18.0" />

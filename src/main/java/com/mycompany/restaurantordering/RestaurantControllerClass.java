@@ -8,6 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
@@ -18,6 +21,8 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 public class RestaurantControllerClass {
     
@@ -92,10 +97,49 @@ public class RestaurantControllerClass {
     @FXML
     private Pane pane;
 
+    @FXML
+    void drinkSelected(ActionEvent event) {
+        updateOrder();
+    }
+    
+    @FXML
+    void waterToggled(ActionEvent event) {
+        updateOrder();
+    }
+    
+    @FXML
+    void placeButton(ActionEvent event) throws IOException {
+        if (!order.isComplete()) {
+            new Alert(Alert.AlertType.WARNING, "Please select one entrée and one drink.").showAndWait();
+            return;
+        }
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("secondary.fxml"));
+        Stage stage = new Stage();
+        stage.setTitle("Order Summary");
+        stage.setScene(new Scene(loader.load()));
+        ((SecondaryController) loader.getController()).setOrder(order);
+        stage.show();
+        }
     
     @FXML
     void exitMenu(ActionEvent event) {
         Platform.exit();
+    }
+    
+    @FXML
+        void clearButton(ActionEvent event) {
+        itemsListView.getSelectionModel().clearSelection();
+        toggleGroup.selectToggle(null);
+        specialRequestTextField.clear();
+        freeWaterCheckBox.setSelected(false);
+        updateOrder();
+    }
+
+    @FXML
+        void clearDrinkMenu(ActionEvent event) {
+        toggleGroup.selectToggle(null);
+        updateOrder();
     }
     
     @FXML

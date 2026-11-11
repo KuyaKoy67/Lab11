@@ -1,15 +1,12 @@
 package com.mycompany.restaurantordering;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -21,19 +18,11 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import javafx.scene.layout.Pane;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class RestaurantControllerClass {
     
     private final Order order = new Order();
-    
-    private String selectedEntree = "";
-    private double entreePrice = 0.0;
-    private String slectedDrink = "";
-    private double drinkPrice = 0.0;
-    private boolean waterRequested = false;
-    private String specialRequestsText = "";
     
     @FXML
     public void initialize() {
